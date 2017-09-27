@@ -9,8 +9,6 @@
 #include <QVBoxLayout>
 #include <QHeaderView>
 
-#include <QDebug>
-
 class TableView: public QTableView{
     Q_OBJECT
     QDialog *popup;
@@ -20,7 +18,6 @@ public:
     TableView(QWidget *parent = Q_NULLPTR):QTableView(parent){
         viewport()->installEventFilter(this);
         setMouseTracking(true);
-//        this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
         popup = new QDialog(this, Qt::Popup | Qt::ToolTip);
 
@@ -32,7 +29,6 @@ public:
         //popupLabel->setOpenExternalLinks(true);
         popup->setLayout(layout);
         popup->installEventFilter(this);
-
     }
 
     bool eventFilter(QObject *watched, QEvent *event){
@@ -46,7 +42,6 @@ public:
                 else{
                     popup->hide();
                 }
-                     popup->setFixedWidth(100);
             }
         }
         else if(popup == watched){
@@ -60,11 +55,10 @@ public:
 
     void showPopup (const QModelIndex &index) const {
         if(index.column() == 1){
-            QRect r = visualRect(index);
-//            popup->move(viewport()->mapToGlobal(r.bottomRight()));
-            popup->move(viewport()->mapToGlobal(r.bottomLeft()));
-            popup->setFixedWidth(r.width());
             popupLabel->setText(index.data(Qt::DisplayRole).toString());
+            QRect r = visualRect(index);
+            popup->move(viewport()->mapToGlobal(r.bottomLeft()));
+            popup->setFixedSize(100,  popup->heightForWidth(100));
             popup->adjustSize();
             popup->show();
         }

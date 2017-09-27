@@ -68,8 +68,6 @@ AddressWidget::AddressWidget(QWidget *parent)
 void AddressWidget::setupTabs()
 {
 
-
-
     for (int i = 0; i < projectdata.vectorListofPairs.size(); ++i) {
         QString str = projectdata.regviewtablelist.at(i);
         TableModel *model = new TableModel(projectdata.vectorListofPairs[i],this);

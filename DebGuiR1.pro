@@ -30,7 +30,8 @@ SOURCES += \
     addresswidget.cpp \
     tablemodel.cpp \
     memoryviewer.cpp \
-    mydialog.cpp
+    mydialog.cpp \
+    codeedit.cpp
 
 HEADERS += \
         mainwindow.h \

@@ -268,9 +268,7 @@ void MainWindow::reRun(){
 
 void MainWindow::stop(){
 
-    qDebug()<<"stop";
-    commandStatus = 3;
-    //chrzControl
+
 
 }
 

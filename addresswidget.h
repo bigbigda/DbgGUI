@@ -37,6 +37,7 @@ class AddressWidget : public QTabWidget
 
 public:
     AddressWidget(QWidget *parent = 0);
+    TableView *tableView[100];
 
 public slots:
 

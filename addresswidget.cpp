@@ -52,7 +52,7 @@
 
 #include <QtWidgets>
 #include <QSqlTableModel>
-
+#include <QDebug>
 
 extern ProjectData projectdata;
 //! [0]
@@ -71,16 +71,26 @@ void AddressWidget::setupTabs()
     for (int i = 0; i < projectdata.vectorListofPairs.size(); ++i) {
         QString str = projectdata.regviewtablelist.at(i);
         TableModel *model = new TableModel(projectdata.vectorListofPairs[i],this);
-        TableView *tableView = new TableView;
+        tableView[i] = new TableView;
 
-        tableView->setModel(model);
-        tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-        tableView->horizontalHeader()->setStretchLastSection(true);
-        tableView->verticalHeader()->hide();
-        tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        tableView[i]->setModel(model);
+        tableView[i]->resizeColumnsToContents();
+        tableView[i]->horizontalScrollBar()->setPageStep(1);
+if (i != 1){
+        tableView[i]->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);}else {
+     tableView[i]->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+}
+        tableView[i]->horizontalScrollBar()->setValue(1);
+      tableView[i]->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+        qDebug()<<"scroll"<<tableView[i]->horizontalScrollBar()->value();
+        tableView[i]->setSelectionBehavior(QAbstractItemView::SelectRows);
+        tableView[i]->horizontalHeader()->setStretchLastSection(true);
+        tableView[i]->verticalHeader()->hide();
+        tableView[i]->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        tableView[i]->setSelectionMode(QAbstractItemView::SingleSelection);
 
-        addTab(tableView, str);
+        addTab(tableView[i], str);
+        tableView[i]->horizontalScrollBar()->setValue(1);
     }
 
 }

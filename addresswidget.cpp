@@ -74,15 +74,11 @@ void AddressWidget::setupTabs()
         tableView[i] = new TableView;
 
         tableView[i]->setModel(model);
+
         tableView[i]->resizeColumnsToContents();
         tableView[i]->horizontalScrollBar()->setPageStep(1);
-if (i != 1){
-        tableView[i]->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);}else {
-     tableView[i]->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-}
-        tableView[i]->horizontalScrollBar()->setValue(1);
-      tableView[i]->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
-        qDebug()<<"scroll"<<tableView[i]->horizontalScrollBar()->value();
+        tableView[i]->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        tableView[i]->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
         tableView[i]->setSelectionBehavior(QAbstractItemView::SelectRows);
         tableView[i]->horizontalHeader()->setStretchLastSection(true);
         tableView[i]->verticalHeader()->hide();
@@ -90,7 +86,6 @@ if (i != 1){
         tableView[i]->setSelectionMode(QAbstractItemView::SingleSelection);
 
         addTab(tableView[i], str);
-        tableView[i]->horizontalScrollBar()->setValue(1);
     }
 
 }

@@ -268,8 +268,22 @@ void MainWindow::reRun(){
 
 void MainWindow::stop(){
 
+//    QPair<QString, QString> pair;
+//    QList<QPair<QString, QString> > listofPairs;
+    QPair<QString, QString> pair;
+    QList<QPair<QString, QString> > listofPairs;
 
 
+    pair.first = " xxxxxxxxxxxxxx";
+    pair.second = "1231321_0?999999999999999999999999999999999999999999999999999999999999";
+    listofPairs.append(pair);
+    pair.first = " !!!!!!!!!!!!!!!!!!!";
+    pair.second = "?????????????????????????";
+    listofPairs.append(pair);
+    TableModel *model1 = new TableModel(listofPairs);
+
+//    this->addressWidget->tableView[1]->model()->setData(this->addressWidget->tableView[1]->model()->index(1,1),1000000);
+        this->addressWidget->tableView[0]->setModel(model1);
 }
 
 void MainWindow::createActions(){

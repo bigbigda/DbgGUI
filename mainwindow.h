@@ -24,6 +24,8 @@ public:
     void loadFile2(const QString &fileName);
 
       QFile file;
+
+
 private slots:
 
     void newLetter();
